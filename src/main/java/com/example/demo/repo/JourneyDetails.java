@@ -1,7 +1,8 @@
 package com.example.demo.repo;
 
-import java.sql.Date;
-import java.sql.Time;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import jakarta.persistence.*;
 
@@ -13,31 +14,28 @@ public class JourneyDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "cardNumber", referencedColumnName = "CardNumber", nullable = false)
-    private CardDetails cardDetails;
+   @Column(name="card_details",nullable=false)
+    private Long cardNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "EntryId", referencedColumnName = "StationId", nullable = false)
-    private MetroStations entryStation;
+   @Column(nullable=false)
+    private int entryStation;
 
     @Column(nullable=false)
-    private Date EntryDate;
+    private LocalDate EntryDate;
 
     @Column(nullable=false)
-    private Time EntryTime;
+    private LocalTime EntryTime;
 
-    @ManyToOne
-    @JoinColumn(name = "DestinationId", referencedColumnName = "StationId")
-    private MetroStations exitStation;
+    @Column(nullable=false)
+    private int exitStation;
 
     @Column
-    private Date ExitDate;
+    private LocalDate ExitDate;
 
     @Column
-    private Time ExitTime;
+    private LocalTime ExitTime;
 
-    @Column(nullable=false)
+    @Column(name="in_transit",nullable=false)
     private boolean InTransit;
 
     @Column
@@ -48,59 +46,59 @@ public class JourneyDetails {
         return id;
     }
 
-    public CardDetails getCardDetails() {
-        return cardDetails;
+    public Long getCardDetails() {
+        return cardNumber;
     }
 
-    public void setCardDetails(CardDetails cardDetails) {
-        this.cardDetails = cardDetails;
+    public void setCardDetails(Long cardDetails) {
+        this.cardNumber = cardDetails;
     }
 
-    public MetroStations getEntryStation() {
+    public int getEntryStation() {
         return entryStation;
     }
 
-    public void setEntryStation(MetroStations entryStation) {
+    public void setEntryStation(int entryStation) {
         this.entryStation = entryStation;
     }
 
-    public Date getEntryDate() {
+    public LocalDate getEntryDate() {
         return EntryDate;
     }
 
-    public void setEntryDate(Date entryDate) {
+    public void setEntryDate(LocalDate entryDate) {
         EntryDate = entryDate;
     }
 
-    public Time getEntryTime() {
+    public LocalTime getEntryTime() {
         return EntryTime;
     }
 
-    public void setEntryTime(Time entryTime) {
+    public void setEntryTime(LocalTime entryTime) {
         EntryTime = entryTime;
     }
 
-    public MetroStations getExitStation() {
+    public int getExitStation() {
         return exitStation;
     }
 
-    public void setExitStation(MetroStations exitStation) {
+    public void setExitStation(int exitStation) {
         this.exitStation = exitStation;
     }
 
-    public Date getExitDate() {
+    public LocalDate getExitDate() {
         return ExitDate;
     }
 
-    public void setExitDate(Date exitDate) {
+    public void setExitDate(LocalDate exitDate) {
         ExitDate = exitDate;
     }
 
-    public Time getExitTime() {
+    public LocalTime getExitTime() {
         return ExitTime;
     }
 
-    public void setExitTime(Time exitTime) {
+    public void setExitTime(LocalTime exitTime) {
         ExitTime = exitTime;
     }
 

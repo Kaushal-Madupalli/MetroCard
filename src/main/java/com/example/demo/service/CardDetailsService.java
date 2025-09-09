@@ -51,6 +51,17 @@ public class CardDetailsService {
 			return 0;
 		}
 	}
+	
+	public void setBalance(Long cardNo,float newBalance)
+	{
+		Optional<CardDetails> card=cardDetailsRepository.findById(cardNo);
+		if(card.isPresent())
+		{
+			
+			card.get().setBalance(newBalance);
+		}
+
+	}
 
 
 }
