@@ -23,7 +23,7 @@ public class JourneyDetailsService {
 
 		public String setEntryPoint(int entryid,Long cardNo)
 		{
-			boolean flag=cardDetailsService.validateCard(cardNo);
+			String flag=cardDetailsService.validateCard(cardNo);
 			if(!flag)
 			{
 				return "Invalid Card Number";
